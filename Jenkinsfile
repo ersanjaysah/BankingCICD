@@ -15,5 +15,12 @@ pipeline {
                 sh "mvn clean package"
             }
         }
+
+        stage('HTML Report by TestNG'){
+            steps {
+                echo "Creating Test Report by testNG"
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/BankingProject/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+            }
+        }
     }
 }
