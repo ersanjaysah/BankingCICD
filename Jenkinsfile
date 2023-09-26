@@ -42,5 +42,16 @@ pipeline {
                 sh "docker push ssah6694/banking-project:1.0"
             }
         }
+
+        stage("configure server with terraform and deploy application using ansible"){
+            steps{
+                dir('terraform-serverfile'){
+                    sh 'sudo chmod 600 insure-key.pem'
+                    sh 'terraform init'
+                    sh 'terraform validate'
+                    sh 'terraform apply --auto-approve'
+                }
+            }
+        }
     }
 }
