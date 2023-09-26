@@ -8,5 +8,12 @@ pipeline {
                 git 'https://github.com/ersanjaysah/BankingCICD.git'
             }
         }
+
+        stage('Build the Application'){
+            steps {
+                echo "Cleaning >> Compiling >> Testing >> Packaging"
+                sh "mvn clean package"
+            }
+        }
     }
 }
