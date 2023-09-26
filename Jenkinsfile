@@ -43,7 +43,7 @@ pipeline {
             }
         }
 
-        stage("configure server with terraform and deploy application using ansible"){
+        stage("configure & deploy application using ansible"){
             steps{
                 dir('terraform-serverfile'){
                     sh 'sudo chmod 600 insure-key.pem'
