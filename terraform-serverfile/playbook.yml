@@ -12,4 +12,4 @@
       command: sudo systemctl start docker
 
     - name: deploy docker container
-      command: docker run -itd -p 8084:8081 ssah6694/banking-project:1.0
+      command: docker run -dt -p 8084:8081 ssah6694/banking-project:1.0
