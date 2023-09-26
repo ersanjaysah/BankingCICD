@@ -29,5 +29,14 @@ pipeline {
                 sh "docker build -t ssah6694/banking-project:1.0 ."
             }
         }
+
+        stage("pushing images to dockerhub"){
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'credentials', passwordVariable: 'dockerhub_password', usernameVariable: 'dockerhub_user')]) {
+                sh "docker login -u ${dockerhub_user} -p ${dockerhub_password}"
+                    }
+                sh "docker push ssah6694/banking-project:1.0"
+            }
+        }
     }
 }
