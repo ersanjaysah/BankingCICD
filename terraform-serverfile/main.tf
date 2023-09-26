@@ -7,6 +7,7 @@ resource "aws_instance" "test-server" {
             type = "ssh"
             user = "ubuntu"
             private_key = file("./insure-key.pem")
+            host = self.public_ip
         }
         provisioner "remote-exec" {
             inline = [ "echo 'wait to start the instance' " ]
